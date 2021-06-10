@@ -1,0 +1,72 @@
+{% extends "base4.html" %}
+{% block title %}File Uploader{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>低信噪比音频强化系统</h1>
+    <br>
+    <blockquote>
+        <p>选择文件进行音频强化.</p>
+    </blockquote>
+    <br>
+    <!-- The file upload form used as target for the file upload widget -->
+    <table class="table">
+    <tbody>
+    {% for files in files_list %}
+        <tr>
+        <td>
+            {% if files[-1] == '/' %}
+            <a href="{{ url_for('get_file', filename=files)}}">{{ files }}</a>
+            {% else %}
+            <a href="{{ url_for('get_file', filename=files)}}" target="_blank">{{ files }}</a>
+            {% endif %}
+        </td>
+        <td>
+            <button class="btn btn-outline-primary" onclick="location.href='{{url_for('speechEnhance', fileName=files)}}'" type="button"> 增 强 </button>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <br>
+
+    {% if img != None %}
+        <blockquote>
+        <p>强化结果对比</p>
+        </blockquote>
+        <img src="{{ url_for('static',filename=img) }}" width="100%">
+        <br>
+        <div class="row">
+        <div class="col-md-1"></div>
+        <audio class="col-md-4" controls>
+            <source src="{{ url_for('static',filename=wav) }}">
+        </audio>
+        <div class="col-md-1"></div>
+        <audio class="col-md-4" controls>
+            <source src="{{ url_for('static',filename=raw) }}">
+        </audio>
+        <div class="col-md-1"></div>
+        </div>
+    {% endif %}
+
+
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+
+                    <li>文件格式限定为 (<strong>WAV</strong>).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
