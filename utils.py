@@ -14,7 +14,7 @@ def load_model(modelname,filename):
     if modelname == "GRN":
         model = GRN()
     # path = "./model/" + modelname + "/GRN_model.tar"
-    path = "/home/aone/PycharmProjects/flask-file-uploader-master/model/GRN/GRN_model.tar"
+    path = "/home/aone/PycharmProjects/kj-flask-system/model/GRN/GRN_model.tar"
     model_checkpoint = torch.load(
         path)
     # print(model_checkpoint)
@@ -100,10 +100,10 @@ def mag2wav(enhances_mag,mixs_wav,mixs_real,mixs_mag,mixs_imag,mixs):
     enhance_spec = librosa.stft(enhance, n_fft=np.int(2 ** np.ceil(np.log2(win_len))),
                         hop_length=hop_len,
                         win_length=win_len, )
-    # sf.write("D:/Chrome downloads/flask-file-uploader-master/flask-file-uploader-master/date/enhanced/" + mixs_wav.split('/')[-1], enhance, samplerate=sr)
-    # sf.write("D:/Chrome downloads/flask-file-uploader-master/flask-file-uploader-master/date/new.WAV"
+    # sf.write("D:/Chrome downloads/kj-flask-system/kj-flask-system/date/enhanced/" + mixs_wav.split('/')[-1], enhance, samplerate=sr)
+    # sf.write("D:/Chrome downloads/kj-flask-system/kj-flask-system/date/new.WAV"
     #          , enhance, samplerate=sr)
-    librosa.output.write_wav('/home/aone/PycharmProjects/flask-file-uploader-master/static/enhanced/'+ mixs_wav.split('/')[-1], enhance.astype(np.float32), sr=sr)
+    librosa.output.write_wav('/home/aone/PycharmProjects/kj-flask-system/static/enhanced/'+ mixs_wav.split('/')[-1], enhance.astype(np.float32), sr=sr)
 
     plt.subplot(221)
     librosa.display.waveplot(mix, sr)
@@ -132,7 +132,7 @@ def mag2wav(enhances_mag,mixs_wav,mixs_real,mixs_mag,mixs_imag,mixs):
     # plt.plot(enhances)
     librosa.display.specshow(librosa.power_to_db(enhance_spec), sr=sr, x_axis='time', y_axis='hz')
     plt.title('Enhance Spectrum')
-    plt.savefig("/home/aone/PycharmProjects/flask-file-uploader-master/static/spectrum/"+ mixs_wav.split('/')[-1].replace('.WAV','.jpg').replace('.wav','.jpg'))
+    plt.savefig("/home/aone/PycharmProjects/kj-flask-system/static/spectrum/"+ mixs_wav.split('/')[-1].replace('.WAV','.jpg').replace('.wav','.jpg'))
     # plt.show()
 
     return enhance
@@ -141,5 +141,5 @@ if __name__ == '__main__':
     # print(torch.__version__)
 
     # load_model("GRN","./data/0babbleFDHC0FDHC0_SI929.WAV")
-    load_model("GRN", "/home/aone/PycharmProjects/flask-file-uploader-master/data/0babbleFDHC0FDHC0_SI929.WAV")
+    load_model("GRN", "/home/aone/PycharmProjects/kj-flask-system/data/0babbleFDHC0FDHC0_SI929.WAV")
 

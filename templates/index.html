@@ -6,9 +6,8 @@
     <h1>低信噪比音频强化系统</h1>
     <br>
     <blockquote>
-        <p>算法模型介绍</p>
+        <p>传统算法</p>
     </blockquote>
-    <br>
     <!-- The file upload form used as target for the file upload widget -->
 
     <div class="row">
@@ -17,7 +16,7 @@
 		<img class="card-img-top" src="./static/img/model.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
-			<h5 class="card-title">维纳滤波</h5>
+			<h5 class="card-title">谱减法 </h5>
 			<p class="card-text">
 				传统算法模型
 			</p>
@@ -30,7 +29,7 @@
 		<img class="card-img-top" src="./static/img/model2.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
-			<h5 class="card-title">MSE</h5>
+			<h5 class="card-title">MMSE</h5>
 			<p class="card-text">
 				传统算法模型
 			</p>
@@ -43,9 +42,9 @@
 		<img class="card-img-top" src="./static/img/model3.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
-			<h5 class="card-title">NRNet</h5>
+			<h5 class="card-title">维纳滤波</h5>
 			<p class="card-text">
-				时频域增强感受野模型
+				传统算法模型
 			</p>
 			<p class="card-text"><small class="text-muted"></small></p>
 		</div>
@@ -56,48 +55,65 @@
 		<img class="card-img-top" src="./static/img/model4.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
-			<h5 class="card-title">CRNN</h5>
+			<h5 class="card-title">卡尔曼滤波</h5>
 			<p class="card-text">
-				Baseline Model
+				传统算法模型
 			</p>
 			<p class="card-text"><small class="text-muted"></small></p>
 		</div>
 	</div>
     </div>
-    <div class="col-sm-2  col-md-3 mb-3">
-        <div class="card h-100">
+</div>
+
+    <br>
+    <blockquote>
+        <p>T-F Domain 时频域模型</p>
+    </blockquote>
+
+    <div class="row">
+    <div class="col-sm-6  col-md-3 mb-3">
+	<div class="card h-100" >
 		<img class="card-img-top" src="./static/img/model5.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
-			<h5 class="card-title">RCAN</h5>
+			<h5 class="card-title">CRN</h5>
 			<p class="card-text">
-				Baseline Model
+				时频域模型
 			</p>
 			<p class="card-text"><small class="text-muted"></small></p>
 		</div>
 	</div>
     </div>
-    <div class="col-sm-2  col-md-3 mb-3">
-        <div class="card h-100">
+    <div class="col-sm-6  col-md-3 mb-3">
+	<div class="card h-100" >
 		<img class="card-img-top" src="./static/img/model6.jpg" alt="">
-        <a class="card-block stretched-link text-decoration-none" href="/"></a>
-		<div class="card-body">
-			<h5 class="card-title">Noise-aware</h5>
-			<p class="card-text">
-				LSTM based Model
-			</p>
-			<p class="card-text"><small class="text-muted"></small></p>
-		</div>
-	</div>
-    </div>
-    <div class="col-sm-2  col-md-3 mb-3">
-        <div class="card h-100">
-		<img class="card-img-top" src="./static/img/model7.jpg" alt="">
         <a class="card-block stretched-link text-decoration-none" href="/"></a>
 		<div class="card-body">
 			<h5 class="card-title">GRN</h5>
 			<p class="card-text">
-				Baseline Model
+				时频域模型
+			</p>
+			<p class="card-text"><small class="text-muted"></small></p>
+		</div>
+	</div>
+    </div>
+</div>
+
+
+    <br>
+    <blockquote>
+        <p>Time Domain时域模型</p>
+    </blockquote>
+
+    <div class="row">
+    <div class="col-sm-6  col-md-3 mb-3">
+	<div class="card h-100" >
+		<img class="card-img-top" src="./static/img/model7.jpg" alt="">
+        <a class="card-block stretched-link text-decoration-none" href="/"></a>
+		<div class="card-body">
+			<h5 class="card-title">RTNet</h5>
+			<p class="card-text">
+				时域模型
 			</p>
 			<p class="card-text"><small class="text-muted"></small></p>
 		</div>
