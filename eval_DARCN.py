@@ -110,7 +110,7 @@ def load_model(modelName, fileName):
 
     plt.subplot(222)
     librosa.display.waveplot(enhances_wav, sr)
-    plt.title('Enhance Time Signal')
+    plt.title(modelName+' Enhance Time Signal')
 
     plt.subplot(223)
     mixs = librosa.stft(ori_mixs_wav,
@@ -126,7 +126,7 @@ def load_model(modelName, fileName):
                             hop_length=160,
                             win_length=320)
     librosa.display.specshow(librosa.power_to_db(enhances), sr=sr, x_axis='time', y_axis='hz')
-    plt.title('Enhance Spectrum')
+    plt.title(modelName+' Enhance Spectrum')
     plt.tight_layout()
     plt.savefig(
         "/home/aone/PycharmProjects/kj-flask-system/static/spectrum/" + modelName + fileName.split('/')[-1].replace(
