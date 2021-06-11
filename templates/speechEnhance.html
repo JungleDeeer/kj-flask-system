@@ -2,6 +2,7 @@
 {% block title %}File Uploader{% endblock %}
 
 {% block page_content %}
+
 <div class="container">
     <h1>低信噪比音频强化系统</h1>
     <br>
@@ -9,20 +10,38 @@
         <p>选择文件进行音频强化.</p>
     </blockquote>
     <br>
+
     <!-- The file upload form used as target for the file upload widget -->
     <table class="table">
     <tbody>
     {% for files in files_list %}
         <tr>
-        <td>
+        <td >
             {% if files[-1] == '/' %}
             <a href="{{ url_for('get_file', filename=files)}}">{{ files }}</a>
             {% else %}
             <a href="{{ url_for('get_file', filename=files)}}" target="_blank">{{ files }}</a>
             {% endif %}
         </td>
-        <td>
-            <button class="btn btn-outline-primary" onclick="location.href='{{url_for('speechEnhance', fileName=files)}}'" type="button"> 增 强 </button>
+        <td width="10%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='specsub')}}'" type="button"> 谱减法 </button>
+        </td>
+
+        <td width="5%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='MMSE')}}'" type="button"> MMSE </button>
+        </td>
+
+        <td width="11%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='wiener')}}'" type="button"> 维纳滤波 </button>
+        </td>
+        <td width="12%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='kalmen')}}'" type="button"> 卡尔曼滤波 </button>
+        </td>
+        <td width="5%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='CRN')}}'" type="button"> CRN </button>
+        </td>
+        <td width="5%">
+            <button class="btn btn-outline-primary" id="func" onclick="location.href='{{url_for('speechEnhance', fileName=files, modelName='GRN')}}'" type="button"> GRN </button>
         </td>
         </tr>
     {% endfor %}
@@ -39,11 +58,11 @@
         <div class="row">
         <div class="col-md-1"></div>
         <audio class="col-md-4" controls>
-            <source src="{{ url_for('static',filename=wav) }}">
+            <source src="{{ url_for('static',filename=raw) }}">
         </audio>
         <div class="col-md-1"></div>
         <audio class="col-md-4" controls>
-            <source src="{{ url_for('static',filename=raw) }}">
+            <source src="{{ url_for('static',filename=wav) }}">
         </audio>
         <div class="col-md-1"></div>
         </div>
@@ -62,11 +81,45 @@
             </ul>
         </div>
     </div>
+
+
+{#    <div class="dropdown">#}
+{#  <button class="dropbtn">下拉菜单</button>#}
+{#  <div class="dropdown-content">#}
+{#    <a href="//www.runoob.com">菜鸟教程 1</a>#}
+{#    <a href="//www.runoob.com">菜鸟教程 2</a>#}
+{#    <a href="//www.runoob.com">菜鸟教程 3</a>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#    <select id="modelName">#}
+{#        <option value="GRN">GRN</option>#}
+{#        <option value="None">None</option>#}
+{#    </select>#}
+
+
+
+
 </div>
 
 
 {% endblock %}
 
 {% block scripts %}
+{#<script type="text/javascript" src="/jquery/jquery.js"></script>#}
+{#<script type="text/javascript">#}
+{#          function  to(){#}
+{#            var  modelName = document.getElementById("modelName").value;#}
+            {#document.location.href(window.location.host+"/speechEnhance?fileNmae="+files+"&modelName="+getval);#}
+{#              return modelName;#}
+{#          }#}
+{##}
+{#          $(document).ready(function(){#}
+{#	        $("#func").click(function(){#}
+{#	            var  modelName = document.getElementById("modelName").value;#}
+{#		         window.location.href="{{ url_for('speechEnhance', fileName=files, modelName=undefinedModel) }}".replace("undefinedModel", modelName)#}
+{#	            });#}
+{#            });#}
+{#</script>#}
 
 {% endblock %}

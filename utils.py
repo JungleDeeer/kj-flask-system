@@ -1,6 +1,7 @@
 import torch
 import numpy as np
-from GRN import GRN
+from model.GRN.GRN import GRN
+from model.CRN.CRN import CRN
 import matplotlib.pyplot as plt
 import librosa
 import soundfile as sf
@@ -13,8 +14,13 @@ def load_model(modelname,filename):
     global model
     if modelname == "GRN":
         model = GRN()
+        path = "/home/aone/PycharmProjects/kj-flask-system/model/GRN/GRN_model.tar"
+    elif modelname == "CRN":
+        model = CRN()
+        path = "/home/aone/PycharmProjects/kj-flask-system/model/CRN/CRN_model.tar"
+
     # path = "./model/" + modelname + "/GRN_model.tar"
-    path = "/home/aone/PycharmProjects/kj-flask-system/model/GRN/GRN_model.tar"
+
     model_checkpoint = torch.load(
         path)
     # print(model_checkpoint)

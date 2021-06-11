@@ -1,0 +1,45 @@
+{% extends "base4.html" %}
+{% block title %}File Uploader{% endblock %}
+
+{% block page_content %}
+ <div class="jumbotron">
+    <div class="container">
+    <h1 class="display-4">谱减法</h1>
+    <p class="lead">经典而成熟的语音增强方法</p>
+    <hr class="my-4">
+    <p> 最早由boll在《Suppression of acousic noise in speech using spectral subtraction》提出。顾名思义，谱减法，就是用带噪信号的频谱减去噪声信号的频谱。谱减法基于一个简单的假设：假设语音中的噪声只有加性噪声，只要将带噪语音谱减去噪声谱，就可以得到纯净语音，这么做的前提是噪声信号是平稳的或者缓慢变化的。提出这个假设就是基于短时谱（25ms），就是频谱在短时间内是平稳不变的。</p>
+    </div>
+</div>
+<div class="container">
+
+    <h1>低信噪比音频强化系统</h1>
+    <br>
+    <blockquote>
+        <p>选择文件进行音频强化.</p>
+    </blockquote>
+    <br>
+
+
+
+
+
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+
+                    <li>文件格式限定为 (<strong>WAV</strong>).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

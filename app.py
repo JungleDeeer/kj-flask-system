@@ -3,7 +3,7 @@ import PIL
 from PIL import Image
 import simplejson
 import traceback
-from utils import load_model
+from eval_DARCN import load_model
 import shutil
 
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
@@ -160,6 +160,10 @@ def index():
 def filePage():
     return render_template('file.html')
 
+@app.route('/model', methods=['GET', 'POST'])
+def showModel():
+    return render_template('model.html')
+
 
 @app.route('/speechEnhance', methods=['GET', 'POST'])
 def speechEnhance():
@@ -169,15 +173,16 @@ def speechEnhance():
         if files_list[i].rsplit('.')[-1] in ['WAV','wav']:
             wav_list.append(files_list[i])
 
-    if request.method == 'GET'and request.args.get('fileName')!=None:
+    if request.method == 'GET'and request.args.get('fileName')!=None and request.args.get('modelName')!=None:
         fileName = request.args.get('fileName')
+        modelName = request.args.get('modelName')
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], fileName)
         if os.path.exists(file_path):
             try:
                 print(file_path)
-                load_model("GRN", file_path)
-                img = 'spectrum/'+fileName.replace('.WAV','.jpg').replace('.wav','.jpg')
-                wav = 'enhanced/'+ fileName
+                load_model(modelName, file_path)
+                img = 'spectrum/' + modelName + fileName.replace('.WAV','.jpg').replace('.wav','.jpg')
+                wav = 'enhanced/'+modelName+ fileName
                 raw_path = os.path.join(app.config['RAW'], fileName)
                 shutil.copy(file_path,raw_path)
                 raw = 'raw/'+fileName
